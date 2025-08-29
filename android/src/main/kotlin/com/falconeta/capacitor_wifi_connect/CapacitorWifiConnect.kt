@@ -419,7 +419,7 @@ class CapacitorWifiConnect(context: Context) : LifecycleObserver {
         count++
         val info = intent.getParcelableExtra<NetworkInfo>(WifiManager.EXTRA_NETWORK_INFO)
         if (info != null && info.isConnected) {
-          if ((info.extraInfo == wifiConfiguration.SSID) || (getAppSSID() == wifiConfiguration.SSID)) {
+          if ((info.extraInfo == wifiConfiguration.SSID) || (getAppSSID() == wifiConfiguration.SSID.removeSurrounding("\""))) {
             val ret = JSObject()
             ret.put("value", 0)
             call.resolve(ret)
