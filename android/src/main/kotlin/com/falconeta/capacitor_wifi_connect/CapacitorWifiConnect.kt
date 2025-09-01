@@ -56,14 +56,12 @@ class CapacitorWifiConnect(context: Context) : LifecycleObserver {
     call: PluginCall
   ) {
 
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.VANILLA_ICE_CREAM) {
-      val networkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
-      if (!networkEnabled) {
-        val ret = JSObject()
-        ret.put("value", -6)
-        call.resolve(ret)
-        return
-      }
+    val networkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+    if (!networkEnabled) {
+      val ret = JSObject()
+      ret.put("value", -6)
+      call.resolve(ret)
+      return
     }
 
     when {
@@ -166,14 +164,12 @@ class CapacitorWifiConnect(context: Context) : LifecycleObserver {
     call: PluginCall
   ) {
 
-    if(Build.VERSION.SDK_INT < Build.VERSION_CODES.VANILLA_ICE_CREAM) {
-      val networkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
-      if (!networkEnabled) {
-        val ret = JSObject()
-        ret.put("value", -6)
-        call.resolve(ret)
-        return
-      }
+    val networkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+    if (!networkEnabled) {
+      val ret = JSObject()
+      ret.put("value", -6)
+      call.resolve(ret)
+      return
     }
 
     if(!wifiManager.isWifiEnabled) {
